@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.scss';
+import Speedometer from './Speedometer';
+import Error from './Error';
 
 const watchPos = callback => {
   const success = pos => {
@@ -40,34 +42,17 @@ const App = () => {
     }
 
     const { speed, accuracy, timestamp } = pos;
-
-    if(!speed) {
-      setError('"speed" N/A');
-    } else {
-      setError(null);
-    }
     
+    setError(null);
     setSpeed(speed);
     setAccuracy(accuracy);
     setTimestamp(timestamp);
   });
 
   return (
-    <div className="speedometer">
-      <div className="speed">
-        <span>{ speed ? `${ speed }` : 'null' }</span>
-      </div>
-      <div className="accuracy">
-        <span>Accuracy:</span>
-        <span>{ accuracy }</span>
-      </div>
-      <div className="timestamp">
-        <span>Timestamp:</span>
-        <span>{ timestamp }</span>
-      </div>
-      <div className="error">
-        <span>{ !error || `Error: ${ error }` }</span>
-      </div>
+    <div className="app">
+      <Error value={ error } />
+      <Speedometer value={ speed } />
     </div>
   );
 }
