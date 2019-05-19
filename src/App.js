@@ -1,36 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import RollingMeter from './RollingMeter/RollingMeter';
 import Error from './Error/Error';
-import { watchPosition } from './utils/geolocation';
+import { GeolocationConsumer } from './Contexts/Geolocation';
 
-const App = () => {
-  const [speed, setSpeed] = useState(null);
-  const [error, setError] = useState(null);
+const App = ({ error, speed }) => (
+  <div className="app">
+    <Error value={ error } />
+    <RollingMeter value={ speed } />
+  </div>
+);
 
-  watchPosition((err, position) => {
-    if (err) {
-      setError(err);
-      return;
-    }
+const AppContainer = () => (
+  <GeolocationConsumer>
+    { App }
+  </GeolocationConsumer>
+);
 
-    if (!position) {
-      setError('"position" N/A');
-      return;
-    }
-
-    const { speed } = position;
-    
-    setError(null);
-    setSpeed(speed);
-  });
-
-  return (
-    <div className="app">
-      <Error value={ error } />
-      <RollingMeter value={ speed } />
-    </div>
-  );
-}
-
-export default App;
+export default AppContainer;
