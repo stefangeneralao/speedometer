@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Label = ({ value, noValue }) => (
+const Label = ({ value }) => (
   <div className="label">
     <LabelTick />
-    { !noValue || <div className="value">{ value }</div> }
+    { value || <div className="value">{ value }</div> }
   </div>
 );
 
@@ -17,17 +17,8 @@ const NumberStrip = ({ value }) => (
         .from(Array(100).keys())
         .map(i => (
           i % 5 === 0 ?
-            <Label
-              key={ `label${ i }` }
-              value={ i }
-              noValue
-              tick
-            /> :
-            <Label
-              key={ `label${ i }` }
-              value={ i }
-              tick
-            />
+            <Label key={ `label${ i }` } value={ i } /> :
+            <Label key={ `label${ i }` } />
         ))
     }
   </div>
