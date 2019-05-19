@@ -1,5 +1,4 @@
 .app {
-  overflow-x: hidden;
   display: grid;
   grid-template-areas:
     "error"
@@ -8,10 +7,4 @@
     auto
     130px;
   height: 100vh;
-  position: relative;
-}
-
-.error {
-  grid-area: error;
-  text-align: center;
 }

@@ -1,6 +1,6 @@
 export const watchPosition = callback => {
-  const success = pos => {
-    const { coords: { speed, accuracy }, timestamp } = pos;
+  const success = position => {
+    const { coords: { speed, accuracy }, timestamp } = position;
     const speedKPH = (speed * 3.6).toFixed(1);
     callback(null, { speed: speedKPH, accuracy, timestamp });
   };
