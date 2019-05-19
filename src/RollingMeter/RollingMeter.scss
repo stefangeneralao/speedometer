@@ -1,9 +1,9 @@
-.speedometer-wrapper {
+.rolling-meter-wrapper {
   height: 100%;
   overflow-x: hidden;
-  grid-area: speedometer;
+  grid-area: rolling-meter;
 
-  .speedometer {
+  .rolling-meter {
     position: relative;
     left: 50%;
     height: 100%;
@@ -16,7 +16,7 @@
     }
     
     .number-strip {
-      position: relative;
+      position: absolute;
       display: flex;
       flex-direction: row;
       font-size: 5rem;

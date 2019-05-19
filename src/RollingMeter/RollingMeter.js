@@ -1,5 +1,5 @@
 import React from 'react';
-import './Speedometer.scss';
+import './RollingMeter.scss';
 
 const Label = ({ value }) => (
   <div className="label">
@@ -34,16 +34,16 @@ const NumberStrip = ({ value }) => (
 );
 
 const Tick = ({ size }) => (
-  <div className={ `tick ${ size }` } />
+  <div className={ `tick ${ size || '' }` } />
 );
 
-const Speedometer = ({ value }) => (
-  <div className="speedometer-wrapper">
-    <div className="speedometer">
+const RollingMeter = ({ value }) => (
+  <div className="rolling-meter-wrapper">
+    <div className="rolling-meter">
       <div className="arrow" />
       <NumberStrip value={ value } />
     </div>
   </div>
 );
 
-export default Speedometer;
+export default RollingMeter;
