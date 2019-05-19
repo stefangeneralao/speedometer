@@ -1,9 +1,18 @@
 import React from 'react';
+import './Speedometer.scss';
 
 const Label = ({ value }) => (
   <div className="label">
-    <LabelTick />
-    { value || <div className="value">{ value }</div> }
+    { 
+      value || value === 0 ? (
+        <>
+          <Tick />
+          <div className="value">{ value }</div>
+        </>
+      ) : (
+        <Tick size={ 'small' } />
+      )
+    }
   </div>
 );
 
@@ -14,7 +23,7 @@ const NumberStrip = ({ value }) => (
   >
     {
       Array
-        .from(Array(100).keys())
+        .from(Array(200).keys())
         .map(i => (
           i % 5 === 0 ?
             <Label key={ `label${ i }` } value={ i } /> :
@@ -24,12 +33,16 @@ const NumberStrip = ({ value }) => (
   </div>
 );
 
-const LabelTick = () => <div className="tick" />;
+const Tick = ({ size }) => (
+  <div className={ `tick ${ size }` } />
+);
 
 const Speedometer = ({ value }) => (
-  <div className="speedometer">
-    <div className="arrow" />
-    <NumberStrip value={ value } />
+  <div className="speedometer-wrapper">
+    <div className="speedometer">
+      <div className="arrow" />
+      <NumberStrip value={ value } />
+    </div>
   </div>
 );
 

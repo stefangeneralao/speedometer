@@ -1,11 +1,9 @@
 import React from 'react';
 
 const Error = ({ value }) => (
-  !value || (
-    <div className="error">
-      Error: { value }
-    </div>
-  )
+  <div className="error">
+    { !value || `Error: ${ value }` }
+  </div>
 );
 
 export default Error;

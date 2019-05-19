@@ -1,0 +1,55 @@
+.speedometer-wrapper {
+  height: 100%;
+  overflow-x: hidden;
+  grid-area: speedometer;
+
+  .speedometer {
+    position: relative;
+    left: 50%;
+    height: 100%;
+
+    .arrow {
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: rgba(255, 0, 0, 0.5);
+    }
+    
+    .number-strip {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      font-size: 5rem;
+      padding-top: 10px;
+      transition: 1500ms;
+      transition-timing-function: cubic-bezier(.49,.15,.36,1);
+
+      .label {
+        position: relative;
+        flex-basis: 50px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: center;
+        width: 100%;
+
+        .tick {
+          position: absolute;
+          left: 50%;
+          background-color: black;
+          opacity: 0.5;
+          width: 3px;
+          height: 20px;
+          
+          &.small {
+            height: 5px;
+          }
+        }
+
+        .value {
+          padding-top: 20px;
+          width: 50px;
+        }
+      }
+    }
+  }
+}
